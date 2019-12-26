@@ -1,0 +1,16 @@
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\bin\Debug\BooksManagementSystem.exe.config
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\bin\Debug\BooksManagementSystem.exe
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\bin\Debug\BooksManagementSystem.pdb
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\bin\Debug\EntityFramework.dll
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\bin\Debug\EntityFramework.xml
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.csprojAssemblyReference.cache
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.Properties.Resources.resources
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.csproj.GenerateResource.cache
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.csproj.CopyComplete
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.exe
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.pdb
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.frmAuthors.resources
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.frmPublishers.resources
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.frmTitles.resources

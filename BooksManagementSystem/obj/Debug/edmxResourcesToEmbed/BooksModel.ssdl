@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BooksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Au_ID" />
+    </Key>
+    <Property Name="Au_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="255" />
+    <Property Name="Year_Born" Type="smallint" />
+  </EntityType>
+  <EntityType Name="Publishers">
+    <Key>
+      <PropertyRef Name="PubID" />
+    </Key>
+    <Property Name="PubID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Company_Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="City" Type="nvarchar" MaxLength="255" />
+    <Property Name="State" Type="nvarchar" MaxLength="255" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="255" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="255" />
+    <Property Name="Comments" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Books.dbo.Title_Author' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Title_Author">
+    <Key>
+      <PropertyRef Name="ISBN" />
+      <PropertyRef Name="AU_ID" />
+    </Key>
+    <Property Name="ISBN" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="AU_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Titles">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="Year_Published" Type="int" />
+    <Property Name="PubID" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="255" />
+    <Property Name="Commets" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Title_Author_Author">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Title_Author" Type="Self.Title_Author" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Au_ID" />
+      </Principal>
+      <Dependent Role="Title_Author">
+        <PropertyRef Name="AU_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Title_Author_Title">
+    <End Role="Titles" Type="Self.Titles" Multiplicity="1" />
+    <End Role="Title_Author" Type="Self.Title_Author" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Titles">
+        <PropertyRef Name="ISBN" />
+      </Principal>
+      <Dependent Role="Title_Author">
+        <PropertyRef Name="ISBN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Titles_Publishers">
+    <End Role="Publishers" Type="Self.Publishers" Multiplicity="0..1" />
+    <End Role="Titles" Type="Self.Titles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publishers">
+        <PropertyRef Name="PubID" />
+      </Principal>
+      <Dependent Role="Titles">
+        <PropertyRef Name="PubID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BooksModelStoreContainer">
+    <EntitySet Name="Authors" EntityType="Self.Authors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Publishers" EntityType="Self.Publishers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Titles" EntityType="Self.Titles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Title_Author" EntityType="Self.Title_Author" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Title_Author].[ISBN] AS [ISBN], 
+    [Title_Author].[AU_ID] AS [AU_ID]
+    FROM [dbo].[Title_Author] AS [Title_Author]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Title_Author_Author" Association="Self.FK_Title_Author_Author">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Title_Author" EntitySet="Title_Author" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Title_Author_Title" Association="Self.FK_Title_Author_Title">
+      <End Role="Titles" EntitySet="Titles" />
+      <End Role="Title_Author" EntitySet="Title_Author" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Titles_Publishers" Association="Self.FK_Titles_Publishers">
+      <End Role="Publishers" EntitySet="Publishers" />
+      <End Role="Titles" EntitySet="Titles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

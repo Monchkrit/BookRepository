@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PublisherModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="PubID" />
+    </Key>
+    <Property Name="PubID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Company_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Titles" Relationship="PublisherModel.FK_Titles_Publishers" FromRole="Publisher" ToRole="Title" />
+  </EntityType>
+  <EntityContainer Name="publishercontext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Publishers" EntityType="Self.Publisher" />
+    <EntitySet Name="Authors" EntityType="PublisherModel.Author" />
+    <EntitySet Name="Titles" EntityType="PublisherModel.Title" />
+    <AssociationSet Name="FK_Titles_Publishers" Association="PublisherModel.FK_Titles_Publishers">
+      <End Role="Publisher" EntitySet="Publishers" />
+      <End Role="Title" EntitySet="Titles" />
+    </AssociationSet>
+    <AssociationSet Name="Title_Author" Association="PublisherModel.Title_Author">
+      <End Role="Author" EntitySet="Authors" />
+      <End Role="Title" EntitySet="Titles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="Au_ID" />
+    </Key>
+    <Property Name="Au_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Author1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Year_Born" Type="Int16" />
+    <NavigationProperty Name="Titles" Relationship="PublisherModel.Title_Author" FromRole="Author" ToRole="Title" />
+  </EntityType>
+  <EntityType Name="Title">
+    <Key>
+      <PropertyRef Name="ISBN" />
+    </Key>
+    <Property Name="ISBN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Year_Published" Type="Int32" />
+    <Property Name="PubID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Commets" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Publisher" Relationship="PublisherModel.FK_Titles_Publishers" FromRole="Title" ToRole="Publisher" />
+    <NavigationProperty Name="Authors" Relationship="PublisherModel.Title_Author" FromRole="Title" ToRole="Author" />
+  </EntityType>
+  <Association Name="FK_Titles_Publishers">
+    <End Type="PublisherModel.Publisher" Role="Publisher" Multiplicity="0..1" />
+    <End Type="PublisherModel.Title" Role="Title" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="PubID" />
+      </Principal>
+      <Dependent Role="Title">
+        <PropertyRef Name="PubID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Title_Author">
+    <End Type="PublisherModel.Author" Role="Author" Multiplicity="*" />
+    <End Type="PublisherModel.Title" Role="Title" Multiplicity="*" />
+  </Association>
+</Schema>

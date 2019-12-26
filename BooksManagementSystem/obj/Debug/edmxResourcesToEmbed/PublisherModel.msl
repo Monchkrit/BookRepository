@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PublisherModelStoreContainer" CdmEntityContainer="publishercontext">
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="PublisherModel.Publisher">
+        <MappingFragment StoreEntitySet="Publishers">
+          <ScalarProperty Name="PubID" ColumnName="PubID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="PublisherModel.Author">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Year_Born" ColumnName="Year_Born" />
+          <ScalarProperty Name="Author1" ColumnName="Author" />
+          <ScalarProperty Name="Au_ID" ColumnName="Au_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Titles">
+      <EntityTypeMapping TypeName="PublisherModel.Title">
+        <MappingFragment StoreEntitySet="Titles">
+          <ScalarProperty Name="Commets" ColumnName="Commets" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PubID" ColumnName="PubID" />
+          <ScalarProperty Name="Year_Published" ColumnName="Year_Published" />
+          <ScalarProperty Name="Title1" ColumnName="Title" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Title_Author" TypeName="PublisherModel.Title_Author" StoreEntitySet="Title_Author">
+      <EndProperty Name="Title">
+        <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+      </EndProperty>
+      <EndProperty Name="Author">
+        <ScalarProperty Name="Au_ID" ColumnName="AU_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
