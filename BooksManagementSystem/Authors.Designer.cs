@@ -1,4 +1,6 @@
-﻿namespace BooksManagementSystem
+﻿using System.Windows.Forms;
+
+namespace BooksManagementSystem
 {
     partial class frmAuthors
     {

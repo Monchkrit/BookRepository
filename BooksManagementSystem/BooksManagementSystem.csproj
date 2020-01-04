@@ -79,6 +79,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BookModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="frmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearch.Designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTitles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,9 +106,12 @@
     <Compile Include="Title.cs">
       <DependentUpon>BookModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TitlePub.cs" />
+    <Compile Include="Title_Author.cs" />
     <EmbeddedResource Include="Authors.resx">
       <DependentUpon>Authors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTitles.resx">
       <DependentUpon>frmTitles.cs</DependentUpon>

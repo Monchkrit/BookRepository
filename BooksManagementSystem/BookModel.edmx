@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BooksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BooksModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Authors">
           <Key>
             <PropertyRef Name="Au_ID" />
@@ -36,7 +36,7 @@ warning 6002: The table/view 'Books.dbo.Title_Author' does not have a primary ke
             <PropertyRef Name="AU_ID" />
           </Key>
           <Property Name="ISBN" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="AU_ID" Type="int" Nullable="false" />
+          <Property Name="AU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Titles">
           <Key>
@@ -51,10 +51,8 @@ warning 6002: The table/view 'Books.dbo.Title_Author' does not have a primary ke
           <Property Name="Subject" Type="nvarchar" MaxLength="255" />
           <Property Name="Commets" Type="nvarchar(max)" />
         </EntityType>
-        <Association Name="FK_Title_Author_Author">
-          <End Role="Authors" Type="Self.Authors" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_Title_Author_Authors">
+          <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
           <End Role="Title_Author" Type="Self.Title_Author" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Authors">
@@ -66,7 +64,9 @@ warning 6002: The table/view 'Books.dbo.Title_Author' does not have a primary ke
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Title_Author_Title">
-          <End Role="Titles" Type="Self.Titles" Multiplicity="1" />
+          <End Role="Titles" Type="Self.Titles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Title_Author" Type="Self.Title_Author" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Titles">
@@ -99,7 +99,7 @@ warning 6002: The table/view 'Books.dbo.Title_Author' does not have a primary ke
     [Title_Author].[AU_ID] AS [AU_ID]
     FROM [dbo].[Title_Author] AS [Title_Author]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Title_Author_Author" Association="Self.FK_Title_Author_Author">
+          <AssociationSet Name="FK_Title_Author_Authors" Association="Self.FK_Title_Author_Authors">
             <End Role="Authors" EntitySet="Authors" />
             <End Role="Title_Author" EntitySet="Title_Author" />
           </AssociationSet>
@@ -112,8 +112,7 @@ warning 6002: The table/view 'Books.dbo.Title_Author' does not have a primary ke
             <End Role="Titles" EntitySet="Titles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BooksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

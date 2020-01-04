@@ -267,11 +267,18 @@ namespace BooksManagementSystem
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            if (txtName.Text.Length < 3)
+            {
+                MessageBox.Show("Invalid Search", "Invalid Search", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             using (bookscontext context = new bookscontext())
             {
                 var authorList = context.Authors.ToList();
-                var firstAuthorMatchIndex = authorList.FindIndex(a => a.Author1.Contains(txtSearch.Text));
-                // MessageBox.Show(firstAuthorMatchIndex.ToString() + authorList[firstAuthorMatchIndex].Author1);
+                var searchText = txtSearch.Text;
+                var firstAuthorMatchIndex = authorList.FindIndex(a => a.Author1.Contains(searchText));
+                
                 if (firstAuthorMatchIndex >= 0)
                     authorBindingSource.Position = firstAuthorMatchIndex;
             }

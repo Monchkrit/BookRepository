@@ -14,3 +14,4 @@ C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSy
 C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.frmAuthors.resources
 C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.frmPublishers.resources
 C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.frmTitles.resources
+C:\Users\monch\Desktop\coding-environment\src\WindowsFormsApps\BooksManagementSystem\BooksManagementSystem\obj\Debug\BooksManagementSystem.frmSearch.resources

@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
 namespace BooksManagementSystem
 {
-    public partial class TitlePub
+    public partial class Title_Author
     {
-        
+        public int AU_ID { get; set; }
+        public string ISBN { get; set; }
     }
 }

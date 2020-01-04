@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label pubIDLabel;
             this.txtTitle = new System.Windows.Forms.TextBox();
+            this.titleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtYearPublished = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
@@ -53,7 +54,6 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnAddNew = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnDone = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
@@ -72,17 +72,17 @@
             this.cboPublishers = new System.Windows.Forms.ComboBox();
             this.publisherBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.titleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAdd = new System.Windows.Forms.Button();
             pubIDLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.titleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.publisherBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.titleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pubIDLabel
             // 
             pubIDLabel.AutoSize = true;
-            pubIDLabel.Location = new System.Drawing.Point(628, 424);
+            pubIDLabel.Location = new System.Drawing.Point(628, 497);
             pubIDLabel.Name = "pubIDLabel";
             pubIDLabel.Size = new System.Drawing.Size(54, 17);
             pubIDLabel.TabIndex = 32;
@@ -96,6 +96,10 @@
             this.txtTitle.Size = new System.Drawing.Size(335, 22);
             this.txtTitle.TabIndex = 0;
             this.txtTitle.TabStop = false;
+            // 
+            // titleBindingSource
+            // 
+            this.titleBindingSource.DataSource = typeof(BooksManagementSystem.Title);
             // 
             // txtYearPublished
             // 
@@ -297,16 +301,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnAddNew
-            // 
-            this.btnAddNew.Location = new System.Drawing.Point(13, 99);
-            this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(75, 23);
-            this.btnAddNew.TabIndex = 24;
-            this.btnAddNew.Text = "Add New";
-            this.btnAddNew.UseVisualStyleBackColor = true;
-            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(94, 99);
@@ -345,6 +339,7 @@
             this.btnAuthors.TabIndex = 31;
             this.btnAuthors.Text = "Authors";
             this.btnAuthors.UseVisualStyleBackColor = true;
+            this.btnAuthors.Click += new System.EventHandler(this.btnAuthors_Click);
             // 
             // btnPublishers
             // 
@@ -354,11 +349,12 @@
             this.btnPublishers.TabIndex = 32;
             this.btnPublishers.Text = "Publishers";
             this.btnPublishers.UseVisualStyleBackColor = true;
+            this.btnPublishers.Click += new System.EventHandler(this.btnPublishers_Click);
             // 
             // txtPubID
             // 
             this.txtPubID.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.titleBindingSource, "PubID", true));
-            this.txtPubID.Location = new System.Drawing.Point(688, 421);
+            this.txtPubID.Location = new System.Drawing.Point(688, 494);
             this.txtPubID.Name = "txtPubID";
             this.txtPubID.Size = new System.Drawing.Size(100, 22);
             this.txtPubID.TabIndex = 33;
@@ -366,43 +362,40 @@
             // 
             // cboAuthor1
             // 
-            this.cboAuthor1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.authorBindingSource, "Author1", true));
-            this.cboAuthor1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAuthor1.FormattingEnabled = true;
             this.cboAuthor1.Location = new System.Drawing.Point(376, 97);
+            this.cboAuthor1.MaxDropDownItems = 64;
             this.cboAuthor1.Name = "cboAuthor1";
             this.cboAuthor1.Size = new System.Drawing.Size(198, 24);
-            this.cboAuthor1.TabIndex = 34;
+            this.cboAuthor1.Sorted = true;
+            this.cboAuthor1.TabIndex = 8;
             // 
             // cboAuthor2
             // 
-            this.cboAuthor2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.authorBindingSource, "Author1", true));
-            this.cboAuthor2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAuthor2.FormattingEnabled = true;
             this.cboAuthor2.Location = new System.Drawing.Point(580, 97);
             this.cboAuthor2.Name = "cboAuthor2";
             this.cboAuthor2.Size = new System.Drawing.Size(208, 24);
-            this.cboAuthor2.TabIndex = 35;
+            this.cboAuthor2.Sorted = true;
+            this.cboAuthor2.TabIndex = 9;
             // 
             // cboAuthor3
             // 
-            this.cboAuthor3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.authorBindingSource, "Author1", true));
-            this.cboAuthor3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAuthor3.FormattingEnabled = true;
             this.cboAuthor3.Location = new System.Drawing.Point(376, 156);
             this.cboAuthor3.Name = "cboAuthor3";
             this.cboAuthor3.Size = new System.Drawing.Size(198, 24);
-            this.cboAuthor3.TabIndex = 36;
+            this.cboAuthor3.Sorted = true;
+            this.cboAuthor3.TabIndex = 10;
             // 
             // cboAuthor4
             // 
-            this.cboAuthor4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.authorBindingSource, "Author1", true));
-            this.cboAuthor4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAuthor4.FormattingEnabled = true;
             this.cboAuthor4.Location = new System.Drawing.Point(580, 156);
             this.cboAuthor4.Name = "cboAuthor4";
             this.cboAuthor4.Size = new System.Drawing.Size(208, 24);
-            this.cboAuthor4.TabIndex = 37;
+            this.cboAuthor4.Sorted = true;
+            this.cboAuthor4.TabIndex = 11;
             // 
             // label9
             // 
@@ -443,7 +436,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 183);
+            this.label13.Location = new System.Drawing.Point(359, 445);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(67, 17);
             this.label13.TabIndex = 43;
@@ -453,10 +446,11 @@
             // 
             this.cboPublishers.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.publisherBindingSource, "Name", true));
             this.cboPublishers.FormattingEnabled = true;
-            this.cboPublishers.Location = new System.Drawing.Point(13, 155);
+            this.cboPublishers.Location = new System.Drawing.Point(432, 438);
             this.cboPublishers.Name = "cboPublishers";
             this.cboPublishers.Size = new System.Drawing.Size(356, 24);
-            this.cboPublishers.TabIndex = 44;
+            this.cboPublishers.Sorted = true;
+            this.cboPublishers.TabIndex = 12;
             // 
             // publisherBindingSource
             // 
@@ -466,15 +460,22 @@
             // 
             this.authorBindingSource.DataSource = typeof(BooksManagementSystem.Author);
             // 
-            // titleBindingSource
+            // btnAdd
             // 
-            this.titleBindingSource.DataSource = typeof(BooksManagementSystem.Title);
+            this.btnAdd.Location = new System.Drawing.Point(12, 99);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 44;
+            this.btnAdd.Text = "Add New";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmTitles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 455);
+            this.ClientSize = new System.Drawing.Size(808, 564);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cboPublishers);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -492,7 +493,6 @@
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.btnDone);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnEdit);
@@ -519,9 +519,9 @@
             this.Name = "frmTitles";
             this.Text = "Titles";
             this.Load += new System.EventHandler(this.frmTitles_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.titleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.publisherBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.titleBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -552,7 +552,6 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnAddNew;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.Button btnFind;
@@ -561,7 +560,6 @@
         private System.Windows.Forms.BindingSource titleBindingSource;
         private System.Windows.Forms.TextBox txtPubID;
         private System.Windows.Forms.ComboBox cboAuthor1;
-        private System.Windows.Forms.BindingSource authorBindingSource;
         private System.Windows.Forms.ComboBox cboAuthor2;
         private System.Windows.Forms.ComboBox cboAuthor3;
         private System.Windows.Forms.ComboBox cboAuthor4;
@@ -572,5 +570,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cboPublishers;
+        private System.Windows.Forms.BindingSource authorBindingSource;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
